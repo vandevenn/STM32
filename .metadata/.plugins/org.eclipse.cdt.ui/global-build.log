@@ -1,0 +1,175 @@
+18:11:51 **** Incremental Build of configuration Debug for project LED_Blink ****
+make -j6 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "LED_Blink.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\D10180\Desktop\project\LED_Blink\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LED_Blink.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: LED_Blink.elf
+ 
+arm-none-eabi-size  LED_Blink.elf 
+arm-none-eabi-objdump -h -S LED_Blink.elf  > "LED_Blink.list"
+   text	   data	    bss	    dec	    hex	filename
+  10736	     20	   1724	  12480	   30c0	LED_Blink.elf
+Finished building: default.size.stdout
+ 
+Finished building: LED_Blink.list
+ 
+18:12:11 **** Incremental Build of configuration Debug for project LED_Blink ****
+make -j6 all 
+arm-none-eabi-size  LED_Blink.elf 
+   text	   data	    bss	    dec	    hex	filename
+  10736	     20	   1724	  12480	   30c0	LED_Blink.elf
+Finished building: default.size.stdout
+ 
+18:17:44 **** Incremental Build of configuration Debug for project LED_Blink ****
+make -j6 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "LED_Blink.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\D10180\Desktop\project\LED_Blink\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LED_Blink.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: LED_Blink.elf
+ 
+arm-none-eabi-size  LED_Blink.elf 
+arm-none-eabi-objdump -h -S LED_Blink.elf  > "LED_Blink.list"
+   text	   data	    bss	    dec	    hex	filename
+  10728	     20	   1724	  12472	   30b8	LED_Blink.elf
+Finished building: default.size.stdout
+ 
+Finished building: LED_Blink.list
+ 
+18:21:11 **** Incremental Build of configuration Debug for project LED_Blink ****
+make -j6 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "LED_Blink.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\D10180\Desktop\project\LED_Blink\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LED_Blink.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: LED_Blink.elf
+ 
+arm-none-eabi-size  LED_Blink.elf 
+arm-none-eabi-objdump -h -S LED_Blink.elf  > "LED_Blink.list"
+   text	   data	    bss	    dec	    hex	filename
+  10712	     20	   1724	  12456	   30a8	LED_Blink.elf
+Finished building: default.size.stdout
+ 
+Finished building: LED_Blink.list
+ 
+18:31:31 **** Incremental Build of configuration Debug for project LED_Blink ****
+make -j6 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "LED_Blink.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\D10180\Desktop\project\LED_Blink\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LED_Blink.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: LED_Blink.elf
+ 
+arm-none-eabi-size  LED_Blink.elf 
+arm-none-eabi-objdump -h -S LED_Blink.elf  > "LED_Blink.list"
+   text	   data	    bss	    dec	    hex	filename
+  10712	     20	   1724	  12456	   30a8	LED_Blink.elf
+Finished building: default.size.stdout
+ 
+Finished building: LED_Blink.list
+ 
+18:48:00 **** Incremental Build of configuration Debug for project LED_Blink ****
+make -j6 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32f1xx_hal_msp.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f1xx_hal_msp.d" -MT"Core/Src/stm32f1xx_hal_msp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_hal_msp.o"
+arm-none-eabi-gcc -o "LED_Blink.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\D10180\Desktop\project\LED_Blink\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LED_Blink.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: LED_Blink.elf
+ 
+arm-none-eabi-size  LED_Blink.elf 
+arm-none-eabi-objdump -h -S LED_Blink.elf  > "LED_Blink.list"
+   text	   data	    bss	    dec	    hex	filename
+  10780	     20	   1724	  12524	   30ec	LED_Blink.elf
+Finished building: default.size.stdout
+ 
+Finished building: LED_Blink.list
+ 
+18:49:07 **** Incremental Build of configuration Debug for project LED_Blink ****
+make -j6 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "LED_Blink.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\D10180\Desktop\project\LED_Blink\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LED_Blink.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: LED_Blink.elf
+ 
+arm-none-eabi-size  LED_Blink.elf 
+arm-none-eabi-objdump -h -S LED_Blink.elf  > "LED_Blink.list"
+   text	   data	    bss	    dec	    hex	filename
+  10776	     20	   1724	  12520	   30e8	LED_Blink.elf
+Finished building: default.size.stdout
+ 
+Finished building: LED_Blink.list
+ 
+10:37:13 **** Incremental Build of configuration Debug for project LED_Blink ****
+make -j6 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "LED_Blink.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\D10180\Desktop\project\LED_Blink\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LED_Blink.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: LED_Blink.elf
+ 
+arm-none-eabi-size  LED_Blink.elf 
+arm-none-eabi-objdump -h -S LED_Blink.elf  > "LED_Blink.list"
+   text	   data	    bss	    dec	    hex	filename
+  10776	     20	   1724	  12520	   30e8	LED_Blink.elf
+Finished building: default.size.stdout
+ 
+Finished building: LED_Blink.list
+ 
+10:58:41 **** Incremental Build of configuration Debug for project LED_Blink ****
+make -j6 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "LED_Blink.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\D10180\Desktop\project\LED_Blink\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LED_Blink.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: LED_Blink.elf
+ 
+arm-none-eabi-size  LED_Blink.elf 
+arm-none-eabi-objdump -h -S LED_Blink.elf  > "LED_Blink.list"
+   text	   data	    bss	    dec	    hex	filename
+  10780	     20	   1724	  12524	   30ec	LED_Blink.elf
+Finished building: default.size.stdout
+ 
+Finished building: LED_Blink.list
+ 
+11:01:45 **** Incremental Build of configuration Debug for project LED_Blink ****
+make -j6 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/main.c:89:63: warning: passing argument 1 of 'HAL_TIM_Base_Start_IT' from incompatible pointer type [-Wincompatible-pointer-types]
+   89 |                                         HAL_TIM_Base_Start_IT(&htim);
+      |                                                               ^~~~~
+      |                                                               |
+      |                                                               TIM_HandleTypeDef **
+In file included from ../Core/Inc/stm32f1xx_hal_conf.h:334,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h:1898:60: note: expected 'TIM_HandleTypeDef *' but argument is of type 'TIM_HandleTypeDef **'
+ 1898 | HAL_StatusTypeDef HAL_TIM_Base_Start_IT(TIM_HandleTypeDef *htim);
+      |                                         ~~~~~~~~~~~~~~~~~~~^~~~
+arm-none-eabi-gcc -o "LED_Blink.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\D10180\Desktop\project\LED_Blink\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LED_Blink.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: LED_Blink.elf
+ 
+arm-none-eabi-size  LED_Blink.elf 
+arm-none-eabi-objdump -h -S LED_Blink.elf  > "LED_Blink.list"
+   text	   data	    bss	    dec	    hex	filename
+  10932	     20	   1716	  12668	   317c	LED_Blink.elf
+Finished building: default.size.stdout
+ 
+Finished building: LED_Blink.list
+ 
+11:03:14 **** Incremental Build of configuration Debug for project LED_Blink ****
+make -j6 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "LED_Blink.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\D10180\Desktop\project\LED_Blink\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LED_Blink.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: LED_Blink.elf
+ 
+arm-none-eabi-size  LED_Blink.elf 
+arm-none-eabi-objdump -h -S LED_Blink.elf  > "LED_Blink.list"
+   text	   data	    bss	    dec	    hex	filename
+  10740	     20	   1716	  12476	   30bc	LED_Blink.elf
+Finished building: default.size.stdout
+ 
+Finished building: LED_Blink.list
+ 
+11:13:49 **** Incremental Build of configuration Debug for project LED_Blink ****
+make -j6 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "LED_Blink.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\D10180\Desktop\project\LED_Blink\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LED_Blink.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: LED_Blink.elf
+ 
+arm-none-eabi-size  LED_Blink.elf 
+arm-none-eabi-objdump -h -S LED_Blink.elf  > "LED_Blink.list"
+   text	   data	    bss	    dec	    hex	filename
+  10812	     20	   1724	  12556	   310c	LED_Blink.elf
+Finished building: default.size.stdout
+ 
+Finished building: LED_Blink.list
+ 
