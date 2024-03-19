@@ -45,7 +45,11 @@ TIM_HandleTypeDef htim2;
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
-
+enum {Stop, Run};
+uint8_t LedState = Stop;
+uint8_t rxData;
+uint32_t cnt = 0;
+uint8_t update = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -59,52 +63,57 @@ static void MX_TIM2_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-enum {Stop, Run};
-uint8_t LedState = Stop;
-uint8_t rxData;
-uint32_t cnt = 0;
-uint8_t update = 0;
+
 	void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 	{
 		if(huart->Instance == USART2)
 		{
-			if (rxData == 'r') {
-				LedState = Run;
-			} else if (rxData == 's') {
-				LedState = Stop;
-			}
+			switch(LedState)
+				{
+					case Stop :
+						if(rxData == 'r')
+						{
+							LedState = Run;
+						}
+						break;
+					case Run :
+						if(rxData == 's')
+						{
+							LedState = Stop;
+						}
+						break;
+				}
 			HAL_UART_Receive_IT(&huart2, &rxData, 1);
 		}
 	}
 	void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	{
-		if (htim->Instance == TIM2)
-		{
-			cnt++;
-			if(cnt > 999)
-			{
-				cnt = 0;
-				update = 1;
-			}
-		}
+	    if (htim->Instance == TIM2)
+	    {
+	        cnt++;
+	        if(cnt > 999)
+	        {
+	            cnt = 0;
+	            update = 1;
+	        }
+	    }
 	}
 	void SystemRun()
 		{
-			if(update)
-			{
-				switch(LedState)
-					{
-						case Stop :
-							HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET);
-							break;
-						case Run :
-							HAL_GPIO_TogglePin(LED1_GPIO_Port, LED1_Pin);
-							break;
-					}
+		if (update) {
+			switch(LedState)
+				{
+					case Stop :
+						HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET);
+						break;
+					case Run :
+						HAL_GPIO_TogglePin(LED1_GPIO_Port, LED1_Pin);
+						break;
+				}
 				update = 0;
 			}
-
 		}
+
 /* USER CODE END 0 */
 
 /**
@@ -113,6 +122,7 @@ uint8_t update = 0;
   */
 int main(void)
 {
+
   /* USER CODE BEGIN 1 */
 
   /* USER CODE END 1 */
@@ -140,7 +150,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
   HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_SET);
   HAL_UART_Receive_IT(&huart2, &rxData, 1);
-
+  HAL_TIM_Base_Start_IT(&htim2);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -149,7 +159,6 @@ int main(void)
   while (1)
   {
 	  SystemRun();
-
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -215,13 +224,9 @@ static void MX_TIM2_Init(void)
 
   /* USER CODE END TIM2_Init 1 */
   htim2.Instance = TIM2;
-  htim2.Init.Prescaler = 7200-1;
+  htim2.Init.Prescaler = 72000-1;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim2.Init.Period = 1000-1
-
-
-
-		  ;
+  htim2.Init.Period = 1000-1;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
