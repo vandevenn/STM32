@@ -1,26 +1,12 @@
-17:30:41 **** Incremental Build of configuration Debug for project UART_PWM ****
+10:58:58 **** Incremental Build of configuration Debug for project UART_PWM ****
 make -j6 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c: In function 'HAL_UART_RxCpltCallback':
-../Core/Src/main.c:72:33: warning: implicit declaration of function 'atoi' [-Wimplicit-function-declaration]
-   72 |                         value = atoi(rxBuffer);
-      |                                 ^~~~
-../Core/Src/main.c:78:81: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
-   78 |                                 HAL_UART_Transmit(&huart2, (uint8_t*)error_msg, strlen(error_msg), HAL_MAX_DELAY);
-      |                                                                                 ^~~~~~
-../Core/Src/main.c:21:1: note: include '<string.h>' or provide a declaration of 'strlen'
-   20 | #include "main.h"
-  +++ |+#include <string.h>
-   21 | /* Private includes ----------------------------------------------------------*/
-../Core/Src/main.c:78:81: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
-   78 |                                 HAL_UART_Transmit(&huart2, (uint8_t*)error_msg, strlen(error_msg), HAL_MAX_DELAY);
-      |                                                                                 ^~~~~~
-../Core/Src/main.c:78:81: note: include '<string.h>' or provide a declaration of 'strlen'
-../Core/Src/main.c:84:54: warning: passing argument 2 of 'HAL_UART_Receive_IT' from incompatible pointer type [-Wincompatible-pointer-types]
-   84 |                         HAL_UART_Receive_IT(&huart2, &rxData, 1);
-      |                                                      ^~~~~~~
-      |                                                      |
-      |                                                      char (*)[80]
+../Core/Src/main.c:87:46: warning: passing argument 2 of 'HAL_UART_Receive_IT' from incompatible pointer type [-Wincompatible-pointer-types]
+   87 |                 HAL_UART_Receive_IT(&huart2, &rxData, 1);
+      |                                              ^~~~~~~
+      |                                              |
+      |                                              char (*)[80]
 In file included from ../Core/Inc/stm32f1xx_hal_conf.h:338,
                  from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:29,
                  from ../Core/Inc/main.h:30,
@@ -28,108 +14,39 @@ In file included from ../Core/Inc/stm32f1xx_hal_conf.h:338,
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:752:75: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char (*)[80]'
   752 | HAL_StatusTypeDef HAL_UART_Receive_IT(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
       |                                                                  ~~~~~~~~~^~~~~
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:131:25: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
-  131 |                         sprintf(txData, "PWM Width: %lu\n", value);
-      |                         ^~~~~~~
-../Core/Src/main.c:21:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
-   20 | #include "main.h"
-  +++ |+#include <stdio.h>
-   21 | /* Private includes ----------------------------------------------------------*/
-../Core/Src/main.c:131:25: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
-  131 |                         sprintf(txData, "PWM Width: %lu\n", value);
-      |                         ^~~~~~~
-../Core/Src/main.c:131:25: note: include '<stdio.h>' or provide a declaration of 'sprintf'
-../Core/Src/main.c:131:55: warning: format '%lu' expects argument of type 'long unsigned int', but argument 3 has type 'int' [-Wformat=]
-  131 |                         sprintf(txData, "PWM Width: %lu\n", value);
-      |                                                     ~~^     ~~~~~
-      |                                                       |     |
-      |                                                       |     int
-      |                                                       long unsigned int
-      |                                                     %u
-../Core/Src/main.c:132:70: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
-  132 |                         HAL_UART_Transmit(&huart2, (uint8_t*)txData, strlen(txData), HAL_MAX_DELAY);
-      |                                                                      ^~~~~~
-../Core/Src/main.c:132:70: note: include '<string.h>' or provide a declaration of 'strlen'
-arm-none-eabi-gcc -o "UART_PWM.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\D10180\Desktop\project\UART_PWM\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="UART_PWM.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: UART_PWM.elf
- 
-arm-none-eabi-size  UART_PWM.elf 
-arm-none-eabi-objdump -h -S UART_PWM.elf  > "UART_PWM.list"
-   text	   data	    bss	    dec	    hex	filename
-  14716	    100	   2140	  16956	   423c	UART_PWM.elf
-Finished building: default.size.stdout
- 
-Finished building: UART_PWM.list
- 
-17:31:12 **** Incremental Build of configuration Debug for project UART_PWM ****
-make -j6 all 
-arm-none-eabi-size  UART_PWM.elf 
-   text	   data	    bss	    dec	    hex	filename
-  14716	    100	   2140	  16956	   423c	UART_PWM.elf
-Finished building: default.size.stdout
- 
-10:33:29 **** Incremental Build of configuration Debug for project UART_PWM ****
-make -j6 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'HAL_UART_RxCpltCallback':
-../Core/Src/main.c:72:33: warning: implicit declaration of function 'atoi' [-Wimplicit-function-declaration]
-   72 |                         value = atoi(rxBuffer);
-      |                                 ^~~~
-../Core/Src/main.c:78:81: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
-   78 |                                 HAL_UART_Transmit(&huart2, (uint8_t*)error_msg, strlen(error_msg), HAL_MAX_DELAY);
-      |                                                                                 ^~~~~~
-../Core/Src/main.c:21:1: note: include '<string.h>' or provide a declaration of 'strlen'
-   20 | #include "main.h"
+../Core/Src/main.c:79:21: warning: variable 'rxBuffer' set but not used [-Wunused-but-set-variable]
+   79 |         static char rxBuffer[10];
+      |                     ^~~~~~~~
+../Core/Src/main.c: In function 'UART_Task':
+../Core/Src/main.c:99:25: warning: implicit declaration of function 'atoi' [-Wimplicit-function-declaration]
+   99 |                 value = atoi(rxBuffer);
+      |                         ^~~~
+../Core/Src/main.c:105:69: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+  105 |                     HAL_UART_Transmit(&huart2, (uint8_t*)error_msg, strlen(error_msg), HAL_MAX_DELAY);
+      |                                                                     ^~~~~~
+../Core/Src/main.c:25:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   24 | #include "queue.h"
   +++ |+#include <string.h>
-   21 | /* Private includes ----------------------------------------------------------*/
-../Core/Src/main.c:78:81: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
-   78 |                                 HAL_UART_Transmit(&huart2, (uint8_t*)error_msg, strlen(error_msg), HAL_MAX_DELAY);
-      |                                                                                 ^~~~~~
-../Core/Src/main.c:78:81: note: include '<string.h>' or provide a declaration of 'strlen'
-../Core/Src/main.c:84:54: warning: passing argument 2 of 'HAL_UART_Receive_IT' from incompatible pointer type [-Wincompatible-pointer-types]
-   84 |                         HAL_UART_Receive_IT(&huart2, &rxData, 1);
-      |                                                      ^~~~~~~
-      |                                                      |
-      |                                                      char (*)[80]
-In file included from ../Core/Inc/stm32f1xx_hal_conf.h:338,
-                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:29,
-                 from ../Core/Inc/main.h:30,
-                 from ../Core/Src/main.c:20:
-../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:752:75: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char (*)[80]'
-  752 | HAL_StatusTypeDef HAL_UART_Receive_IT(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
-      |                                                                  ~~~~~~~~~^~~~~
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:131:25: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
-  131 |                         sprintf(txData, "PWM Width: %lu\n", value);
-      |                         ^~~~~~~
-../Core/Src/main.c:21:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
-   20 | #include "main.h"
-  +++ |+#include <stdio.h>
-   21 | /* Private includes ----------------------------------------------------------*/
-../Core/Src/main.c:131:25: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
-  131 |                         sprintf(txData, "PWM Width: %lu\n", value);
-      |                         ^~~~~~~
-../Core/Src/main.c:131:25: note: include '<stdio.h>' or provide a declaration of 'sprintf'
-../Core/Src/main.c:131:55: warning: format '%lu' expects argument of type 'long unsigned int', but argument 3 has type 'int' [-Wformat=]
-  131 |                         sprintf(txData, "PWM Width: %lu\n", value);
-      |                                                     ~~^     ~~~~~
-      |                                                       |     |
-      |                                                       |     int
-      |                                                       long unsigned int
-      |                                                     %u
-../Core/Src/main.c:132:70: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
-  132 |                         HAL_UART_Transmit(&huart2, (uint8_t*)txData, strlen(txData), HAL_MAX_DELAY);
-      |                                                                      ^~~~~~
-../Core/Src/main.c:132:70: note: include '<string.h>' or provide a declaration of 'strlen'
+   25 | 
+../Core/Src/main.c:105:69: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+  105 |                     HAL_UART_Transmit(&huart2, (uint8_t*)error_msg, strlen(error_msg), HAL_MAX_DELAY);
+      |                                                                     ^~~~~~
+../Core/Src/main.c:105:69: note: include '<string.h>' or provide a declaration of 'strlen'
 arm-none-eabi-gcc -o "UART_PWM.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\D10180\Desktop\project\UART_PWM\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="UART_PWM.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: UART_PWM.elf
  
 arm-none-eabi-size  UART_PWM.elf 
 arm-none-eabi-objdump -h -S UART_PWM.elf  > "UART_PWM.list"
    text	   data	    bss	    dec	    hex	filename
-  14716	    100	   2140	  16956	   423c	UART_PWM.elf
+  24816	    104	   8832	  33752	   83d8	UART_PWM.elf
 Finished building: default.size.stdout
  
 Finished building: UART_PWM.list
+ 
+10:59:18 **** Incremental Build of configuration Debug for project UART_PWM ****
+make -j6 all 
+arm-none-eabi-size  UART_PWM.elf 
+   text	   data	    bss	    dec	    hex	filename
+  24816	    104	   8832	  33752	   83d8	UART_PWM.elf
+Finished building: default.size.stdout
  
