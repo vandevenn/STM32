@@ -75,11 +75,15 @@ void StartDefaultTask(void *argument);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-uint8_t rxData;
+char rxData[80];
 uint16_t value = 0;
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef* huart) {
+	static char rxBuffer[10];
+	static uint8_t index = 0;
+
 	if (huart->Instance == USART2) {
+	        rxBuffer[index++] = rxData[0];
 	        // 데이터를 큐에 보냄
 	        xQueueSendToBackFromISR(uartQueue, &rxData, NULL);
 	        // 다음 데이터 수신을 기다림
@@ -89,8 +93,6 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef* huart) {
 
 void UART_Task(void *pvParameters) {
     char rxBuffer[80];
-    char pwm_msg[30];
-    char error_msg[] = "Error: PWM width must be between 500 and 1000\r\n";
     uint8_t index = 0;
 
     while (1) {
@@ -100,10 +102,9 @@ void UART_Task(void *pvParameters) {
                 value = atoi(rxBuffer);
                 if ((value >= 500) && (value <= 1000)) {
                     __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, value);
-                    sprintf(pwm_msg, "현재 PWM 값 : %d\r\n", value);
-                    HAL_UART_Transmit(&huart2, (uint8_t*)pwm_msg, strlen(pwm_msg), HAL_MAX_DELAY);
                 }
                 else {
+                    char error_msg[] = "Error: PWM width must be between 500 and 1000\r\n";
                     HAL_UART_Transmit(&huart2, (uint8_t*)error_msg, strlen(error_msg), HAL_MAX_DELAY);
                 }
                 index = 0;
@@ -153,11 +154,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
   uartQueue = xQueueCreate(80, sizeof(char));
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);
-  HAL_UART_Receive_IT(&huart2, (uint8_t*)&rxData, 1);
-
-  char welcome_msg[] = "PWM 입력: ";
-  HAL_UART_Transmit(&huart2, (uint8_t*)welcome_msg, strlen(welcome_msg), HAL_MAX_DELAY);
-
+  HAL_UART_Receive_IT(&huart2, (uint8_t*)rxData, 1);
   xTaskCreate(UART_Task, "UART_Task", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY + 1, NULL);
 
   vTaskStartScheduler();

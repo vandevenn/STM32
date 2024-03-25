@@ -154,10 +154,6 @@ int main(void)
   uartQueue = xQueueCreate(80, sizeof(char));
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);
   HAL_UART_Receive_IT(&huart2, (uint8_t*)&rxData, 1);
-
-  char welcome_msg[] = "PWM 입력: ";
-  HAL_UART_Transmit(&huart2, (uint8_t*)welcome_msg, strlen(welcome_msg), HAL_MAX_DELAY);
-
   xTaskCreate(UART_Task, "UART_Task", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY + 1, NULL);
 
   vTaskStartScheduler();
