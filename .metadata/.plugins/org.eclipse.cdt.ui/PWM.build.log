@@ -1,0 +1,93 @@
+16:18:43 **** Incremental Build of configuration Debug for project PWM ****
+make -j6 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_UART_RxCpltCallback':
+../Core/Src/main.c:70:33: warning: implicit declaration of function 'atoi' [-Wimplicit-function-declaration]
+   70 |                         value = atoi(rxBuffer);
+      |                                 ^~~~
+../Core/Src/main.c:75:82: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+   75 |                                 HAL_UART_Transmit(&huart2, (uint8_t *)error_msg, strlen(error_msg), HAL_MAX_DELAY);
+      |                                                                                  ^~~~~~
+../Core/Src/main.c:21:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   20 | #include "main.h"
+  +++ |+#include <string.h>
+   21 | 
+../Core/Src/main.c:75:82: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+   75 |                                 HAL_UART_Transmit(&huart2, (uint8_t *)error_msg, strlen(error_msg), HAL_MAX_DELAY);
+      |                                                                                  ^~~~~~
+../Core/Src/main.c:75:82: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c:80:54: warning: passing argument 2 of 'HAL_UART_Receive_IT' from incompatible pointer type [-Wincompatible-pointer-types]
+   80 |                         HAL_UART_Receive_IT(&huart2, &rxData, 1);
+      |                                                      ^~~~~~~
+      |                                                      |
+      |                                                      char (*)[80]
+In file included from ../Core/Inc/stm32f1xx_hal_conf.h:338,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:752:75: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char (*)[80]'
+  752 | HAL_StatusTypeDef HAL_UART_Receive_IT(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                  ~~~~~~~~~^~~~~
+../Core/Src/main.c:89:5: warning: 'main' is normally a non-static function [-Wmain]
+   89 | int main(void)
+      |     ^~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:125:25: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  125 |                         sprintf(txData, "PWM Width: %lu\n", value);
+      |                         ^~~~~~~
+../Core/Src/main.c:21:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   20 | #include "main.h"
+  +++ |+#include <stdio.h>
+   21 | 
+../Core/Src/main.c:125:25: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  125 |                         sprintf(txData, "PWM Width: %lu\n", value);
+      |                         ^~~~~~~
+../Core/Src/main.c:125:25: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:125:55: warning: format '%lu' expects argument of type 'long unsigned int', but argument 3 has type 'int' [-Wformat=]
+  125 |                         sprintf(txData, "PWM Width: %lu\n", value);
+      |                                                     ~~^     ~~~~~
+      |                                                       |     |
+      |                                                       |     int
+      |                                                       long unsigned int
+      |                                                     %u
+../Core/Src/main.c:126:71: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+  126 |                         HAL_UART_Transmit(&huart2, (uint8_t *)txData, strlen(txData), HAL_MAX_DELAY);
+      |                                                                       ^~~~~~
+../Core/Src/main.c:126:71: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:53:13: warning: 'MX_GPIO_Init' used but never defined
+   53 | static void MX_GPIO_Init(void);
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:54:13: warning: 'MX_USART2_UART_Init' used but never defined
+   54 | static void MX_USART2_UART_Init(void);
+      |             ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:55:13: warning: 'MX_TIM3_Init' used but never defined
+   55 | static void MX_TIM3_Init(void);
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:305:6: warning: 'Error_Handler' defined but not used [-Wunused-function]
+  305 | void Error_Handler(void)
+      |      ^~~~~~~~~~~~~
+../Core/Src/main.c:261:6: warning: 'MX_GPIO_Init' defined but not used [-Wunused-function]
+  261 | void MX_GPIO_Init(void)
+      |      ^~~~~~~~~~~~
+../Core/Src/main.c:228:6: warning: 'MX_USART2_UART_Init' defined but not used [-Wunused-function]
+  228 | void MX_USART2_UART_Init(void)
+      |      ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:179:6: warning: 'MX_TIM3_Init' defined but not used [-Wunused-function]
+  179 | void MX_TIM3_Init(void)
+      |      ^~~~~~~~~~~~
+../Core/Src/main.c:139:6: warning: 'SystemClock_Config' defined but not used [-Wunused-function]
+  139 | void SystemClock_Config(void)
+      |      ^~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:89:5: warning: 'main' defined but not used [-Wunused-function]
+   89 | int main(void)
+      |     ^~~~
+arm-none-eabi-gcc -o "PWM.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\D10180\Desktop\project\PWM\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PWM.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.14.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.100.202309141235/tools/bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Core/Startup/startup_stm32f103rbtx.o: in function `LoopFillZerobss':
+C:/Users/D10180/Desktop/project/PWM/Debug/../Core/Startup/startup_stm32f103rbtx.s:100: undefined reference to `main'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:64: PWM.elf] Error 1
+"make -j6 all" terminated with exit code 2. Build might be incomplete.
+
+16:18:44 Build Failed. 2 errors, 18 warnings. (took 626ms)
+
