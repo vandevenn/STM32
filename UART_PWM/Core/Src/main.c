@@ -18,6 +18,11 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "cmsis_os.h"
+#include "FreeRTOS.h"
+#include "task.h"
+#include "queue.h"
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -40,12 +45,16 @@
 
 /* Private variables ---------------------------------------------------------*/
 TIM_HandleTypeDef htim3;
-
 UART_HandleTypeDef huart2;
 
-
-
-
+QueueHandle_t uartQueue;
+/* Definitions for defaultTask */
+osThreadId_t defaultTaskHandle;
+const osThreadAttr_t defaultTask_attributes = {
+  .name = "defaultTask",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityNormal,
+};
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -55,6 +64,8 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
 static void MX_TIM3_Init(void);
+void StartDefaultTask(void *argument);
+
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -63,27 +74,47 @@ static void MX_TIM3_Init(void);
 /* USER CODE BEGIN 0 */
 char rxData[80];
 uint16_t value = 0;
+
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef* huart) {
 	static char rxBuffer[10];
 	static uint8_t index = 0;
 
 	if (huart->Instance == USART2) {
-		if (rxBuffer[index] == '\r') {
-			value = atoi(rxBuffer);
-			if ((value >= 500) && (value <= 1000)) {
-				__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, value);
-			}
-			else {
-				char error_msg[] = "Error: PWM width must be between 500 and 1000\r\n";
-				HAL_UART_Transmit(&huart2, (uint8_t*)error_msg, strlen(error_msg), HAL_MAX_DELAY);
-			}
-			index = 0;
-		}
-		else {
-			rxBuffer[index++] = rxData[0];
-			HAL_UART_Receive_IT(&huart2, &rxData, 1);
-		}
+	        rxBuffer[index++] = rxData[0];
+	        // 데이터를 큐에 보냄
+	        xQueueSendToBackFromISR(uartQueue, &rxData, NULL);
+	        // 다음 데이터 수신을 기다림
+	        HAL_UART_Receive_IT(&huart2, &rxData, 1);
+	    }
 	}
+
+void UART_Task(void *pvParameters) {
+    char rxBuffer[80];
+    uint8_t index = 0;
+
+    while (1) {
+        // 큐에서 데이터를 받음
+        if (xQueueReceive(uartQueue, &rxBuffer[index], portMAX_DELAY) == pdTRUE) {
+            if (rxBuffer[index] == '\r') {
+                value = atoi(rxBuffer);
+                if ((value >= 500) && (value <= 1000)) {
+                    __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, value);
+                }
+                else {
+                    char error_msg[] = "Error: PWM width must be between 500 and 1000\r\n";
+                    HAL_UART_Transmit(&huart2, (uint8_t*)error_msg, strlen(error_msg), HAL_MAX_DELAY);
+                }
+                index = 0;
+            }
+            else {
+                index++;
+                if (index >= sizeof(rxBuffer)) {
+                    // 버퍼가 가득 찼을 때 처리
+                    index = 0;
+                }
+            }
+        }
+    }
 }
 /* USER CODE END 0 */
 
@@ -118,19 +149,53 @@ int main(void)
   MX_USART2_UART_Init();
   MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
+  uartQueue = xQueueCreate(80, sizeof(char));
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);
   HAL_UART_Receive_IT(&huart2, (uint8_t*)rxData, 1);
+  xTaskCreate(UART_Task, "UART_Task", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY + 1, NULL);
+
+  vTaskStartScheduler();
   /* USER CODE END 2 */
 
+  /* Init scheduler */
+  osKernelInitialize();
+
+  /* USER CODE BEGIN RTOS_MUTEX */
+  /* add mutexes, ... */
+  /* USER CODE END RTOS_MUTEX */
+
+  /* USER CODE BEGIN RTOS_SEMAPHORES */
+  /* add semaphores, ... */
+  /* USER CODE END RTOS_SEMAPHORES */
+
+  /* USER CODE BEGIN RTOS_TIMERS */
+  /* start timers, add new ones, ... */
+  /* USER CODE END RTOS_TIMERS */
+
+  /* USER CODE BEGIN RTOS_QUEUES */
+  /* add queues, ... */
+  /* USER CODE END RTOS_QUEUES */
+
+  /* Create the thread(s) */
+  /* creation of defaultTask */
+  defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
+
+  /* USER CODE BEGIN RTOS_THREADS */
+  /* add threads, ... */
+  /* USER CODE END RTOS_THREADS */
+
+  /* USER CODE BEGIN RTOS_EVENTS */
+  /* add events, ... */
+  /* USER CODE END RTOS_EVENTS */
+
+  /* Start scheduler */
+  osKernelStart();
+
+  /* We should never get here as control is now taken by the scheduler */
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, value);
-			char txData[50];
-			sprintf(txData, "PWM Width: %lu\n", value);
-			HAL_UART_Transmit(&huart2, (uint8_t*)txData, strlen(txData), HAL_MAX_DELAY);
-			HAL_Delay(1000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -293,7 +358,7 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_Init(LED_GPIO_Port, &GPIO_InitStruct);
 
   /* EXTI interrupt init*/
-  HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0);
+  HAL_NVIC_SetPriority(EXTI15_10_IRQn, 5, 0);
   HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
@@ -303,6 +368,45 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 
 /* USER CODE END 4 */
+
+/* USER CODE BEGIN Header_StartDefaultTask */
+/**
+  * @brief  Function implementing the defaultTask thread.
+  * @param  argument: Not used
+  * @retval None
+  */
+/* USER CODE END Header_StartDefaultTask */
+void StartDefaultTask(void *argument)
+{
+  /* USER CODE BEGIN 5 */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END 5 */
+}
+
+/**
+  * @brief  Period elapsed callback in non blocking mode
+  * @note   This function is called  when TIM4 interrupt took place, inside
+  * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
+  * a global variable "uwTick" used as application time base.
+  * @param  htim : TIM handle
+  * @retval None
+  */
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+  /* USER CODE BEGIN Callback 0 */
+
+  /* USER CODE END Callback 0 */
+  if (htim->Instance == TIM4) {
+    HAL_IncTick();
+  }
+  /* USER CODE BEGIN Callback 1 */
+
+  /* USER CODE END Callback 1 */
+}
 
 /**
   * @brief  This function is executed in case of error occurrence.
