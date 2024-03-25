@@ -12,3 +12,10 @@ Finished building: default.size.stdout
  
 Finished building: UART_PWM.list
  
+18:23:34 **** Incremental Build of configuration Debug for project UART_PWM ****
+make -j6 all 
+arm-none-eabi-size  UART_PWM.elf 
+   text	   data	    bss	    dec	    hex	filename
+  27172	    104	   8752	  36028	   8cbc	UART_PWM.elf
+Finished building: default.size.stdout
+ 
