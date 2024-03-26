@@ -1,21 +1,21 @@
-16:58:26 **** Incremental Build of configuration Debug for project UART_printf ****
+17:48:59 **** Incremental Build of configuration Debug for project EXTI ****
 make -j6 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "UART_printf.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\D10180\Desktop\project\UART_printf\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="UART_printf.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: UART_printf.elf
+arm-none-eabi-gcc -o "EXTI.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\D10180\Desktop\project\EXTI\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="EXTI.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: EXTI.elf
  
-arm-none-eabi-size  UART_printf.elf 
-arm-none-eabi-objdump -h -S UART_printf.elf  > "UART_printf.list"
+arm-none-eabi-size  EXTI.elf 
+arm-none-eabi-objdump -h -S EXTI.elf  > "EXTI.list"
    text	   data	    bss	    dec	    hex	filename
-   8776	    112	   1976	  10864	   2a70	UART_printf.elf
+   5588	     20	   1644	   7252	   1c54	EXTI.elf
 Finished building: default.size.stdout
  
-Finished building: UART_printf.list
+Finished building: EXTI.list
  
-16:59:12 **** Incremental Build of configuration Debug for project UART_printf ****
+17:49:40 **** Incremental Build of configuration Debug for project EXTI ****
 make -j6 all 
-arm-none-eabi-size  UART_printf.elf 
+arm-none-eabi-size  EXTI.elf 
    text	   data	    bss	    dec	    hex	filename
-   8776	    112	   1976	  10864	   2a70	UART_printf.elf
+   5588	     20	   1644	   7252	   1c54	EXTI.elf
 Finished building: default.size.stdout
  
