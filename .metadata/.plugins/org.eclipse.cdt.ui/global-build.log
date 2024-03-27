@@ -1,21 +1,28 @@
-17:48:59 **** Incremental Build of configuration Debug for project EXTI ****
+10:46:20 **** Incremental Build of configuration Debug for project TIm_TImeBase ****
 make -j6 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "EXTI.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\D10180\Desktop\project\EXTI\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="EXTI.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: EXTI.elf
+arm-none-eabi-gcc -o "TIm_TImeBase.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\D10180\Desktop\project\TIm_TImeBase\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TIm_TImeBase.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: TIm_TImeBase.elf
  
+arm-none-eabi-size  TIm_TImeBase.elf 
+arm-none-eabi-objdump -h -S TIm_TImeBase.elf  > "TIm_TImeBase.list"
+   text	   data	    bss	    dec	    hex	filename
+   7944	     20	   1716	   9680	   25d0	TIm_TImeBase.elf
+Finished building: default.size.stdout
+ 
+Finished building: TIm_TImeBase.list
+ 
+11:23:21 **** Incremental Build of configuration Debug for project EXTI ****
+make -j6 all 
 arm-none-eabi-size  EXTI.elf 
-arm-none-eabi-objdump -h -S EXTI.elf  > "EXTI.list"
    text	   data	    bss	    dec	    hex	filename
    5588	     20	   1644	   7252	   1c54	EXTI.elf
 Finished building: default.size.stdout
  
-Finished building: EXTI.list
- 
-17:49:40 **** Incremental Build of configuration Debug for project EXTI ****
+11:25:37 **** Incremental Build of configuration Debug for project TIm_TImeBase ****
 make -j6 all 
-arm-none-eabi-size  EXTI.elf 
+arm-none-eabi-size  TIm_TImeBase.elf 
    text	   data	    bss	    dec	    hex	filename
-   5588	     20	   1644	   7252	   1c54	EXTI.elf
+   7944	     20	   1716	   9680	   25d0	TIm_TImeBase.elf
 Finished building: default.size.stdout
  

@@ -1,0 +1,10 @@
+11:25:37 **** Incremental Build of configuration Debug for project TIm_TImeBase ****
+make -j6 all 
+arm-none-eabi-size  TIm_TImeBase.elf 
+   text	   data	    bss	    dec	    hex	filename
+   7944	     20	   1716	   9680	   25d0	TIm_TImeBase.elf
+Finished building: default.size.stdout
+ 
+
+11:25:37 Build Finished. 0 errors, 0 warnings. (took 297ms)
+
