@@ -1,28 +1,21 @@
-10:46:20 **** Incremental Build of configuration Debug for project TIm_TImeBase ****
+18:17:03 **** Incremental Build of configuration Debug for project ADC_TemperatureSensor ****
 make -j6 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "TIm_TImeBase.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\D10180\Desktop\project\TIm_TImeBase\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TIm_TImeBase.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: TIm_TImeBase.elf
+arm-none-eabi-gcc -o "ADC_TemperatureSensor.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\D10180\Desktop\project\ADC_TemperatureSensor\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ADC_TemperatureSensor.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: ADC_TemperatureSensor.elf
  
-arm-none-eabi-size  TIm_TImeBase.elf 
-arm-none-eabi-objdump -h -S TIm_TImeBase.elf  > "TIm_TImeBase.list"
+arm-none-eabi-size  ADC_TemperatureSensor.elf 
+arm-none-eabi-objdump -h -S ADC_TemperatureSensor.elf  > "ADC_TemperatureSensor.list"
    text	   data	    bss	    dec	    hex	filename
-   7944	     20	   1716	   9680	   25d0	TIm_TImeBase.elf
+  27760	    476	   2028	  30264	   7638	ADC_TemperatureSensor.elf
 Finished building: default.size.stdout
  
-Finished building: TIm_TImeBase.list
+Finished building: ADC_TemperatureSensor.list
  
-11:23:21 **** Incremental Build of configuration Debug for project EXTI ****
+18:18:46 **** Incremental Build of configuration Debug for project ADC_TemperatureSensor ****
 make -j6 all 
-arm-none-eabi-size  EXTI.elf 
+arm-none-eabi-size  ADC_TemperatureSensor.elf 
    text	   data	    bss	    dec	    hex	filename
-   5588	     20	   1644	   7252	   1c54	EXTI.elf
-Finished building: default.size.stdout
- 
-11:25:37 **** Incremental Build of configuration Debug for project TIm_TImeBase ****
-make -j6 all 
-arm-none-eabi-size  TIm_TImeBase.elf 
-   text	   data	    bss	    dec	    hex	filename
-   7944	     20	   1716	   9680	   25d0	TIm_TImeBase.elf
+  27760	    476	   2028	  30264	   7638	ADC_TemperatureSensor.elf
 Finished building: default.size.stdout
  

@@ -1280,3 +1280,9 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64
 
 !ENTRY org.eclipse.cdt.core 1 0 2024-03-27 10:30:31.384
 !MESSAGE Indexed 'TIm_TImeBase' (20 sources, 79 headers) in 2.96 sec: 4,136 declarations; 17,895 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.0091%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-03-27 12:11:12.516
+!MESSAGE Indexed 'TEST' (20 sources, 79 headers) in 2.21 sec: 4,136 declarations; 17,895 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.0091%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-03-27 17:20:31.180
+!MESSAGE Indexed 'ADC_TemperatureSensor' (20 sources, 79 headers) in 1.72 sec: 4,136 declarations; 17,895 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.0091%)
