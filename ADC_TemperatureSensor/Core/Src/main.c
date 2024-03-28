@@ -42,7 +42,10 @@
 /* Private variables ---------------------------------------------------------*/
 ADC_HandleTypeDef hadc1;
 
-UART_HandleTypeDef huart2;
+
+UART_HandleTypeDef h
+
+uart2;
 
 /* USER CODE BEGIN PV */
 const float AVG_SLOPE = 4.3E-03;
