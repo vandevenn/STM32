@@ -96,13 +96,15 @@ int main(void)
 	  HAL_GPIO_WritePin (LD2_GPIO_Port, LD2_Pin, GPIO_PIN_SET);
 
 	  HAL_Delay (4000);
+
+
+
+
 	  __HAL_RCC_CLEAR_RESET_FLAGS();
   }
   else
   {
 	  HAL_GPIO_WritePin (LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
-
-
   }
   MX_WWDG_Init();
   /* USER CODE BEGIN 2 */

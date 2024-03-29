@@ -1,7 +1,7 @@
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86_64
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=win32
-configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:GPIO Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:LED_Blink,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Timer Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:UART_PWM Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:UART_printf Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:EXTI Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:TIm_TImeBase Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:ADC_TemperatureSensor Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:WWDG Debug
+configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:GPIO Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:LED_Blink,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Timer Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:UART_PWM Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:UART_printf Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:EXTI Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:TIm_TImeBase Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:ADC_TemperatureSensor Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:WWDG Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:USART Debug
 eclipse.preferences.version=1
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:ADC_TemperatureSensor\ Debug/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:ADC_TemperatureSensor\ Debug/activeLaunchTarget=null\:---

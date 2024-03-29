@@ -8,6 +8,7 @@
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="static void MX_WWDG_Init(void)"/>
 			<item value="rxData"/>
 			<item value="Mode"/>
 			<item value="State"/>
